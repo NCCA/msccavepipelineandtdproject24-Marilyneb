@@ -1,6 +1,6 @@
 The project is a web-based application that allows users to upload, view, and search for 3D models. The purpose is to create a searchable 3D model library.
 
-Plan
+Plan:
     Python and Flask for the backend
     SQLite as the database
     SQLAlchemy as the ORM 
