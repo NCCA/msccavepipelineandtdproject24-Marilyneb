@@ -1,11 +1,17 @@
 The project is a web-based application that allows users to upload, view, and search for 3D models. The purpose is to create a searchable 3D model library.
 
 Plan:
+
     Python and Flask for the backend
+
     SQLite as the database
+
     SQLAlchemy as the ORM 
+
     Three.js for 3D model viewing 
+
     React.js for the frontend
+
     Docker for containerization
 
 Three entities - Users, Assets, and Tags. 
