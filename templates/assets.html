@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Assets</h1>
+  <ul>
+    {% for asset in assets %}
+      <li>
+        <h2>{{ asset.name }}</h2>
+        <p>Tags: {{ asset.tags | join(', ') }}</p>
+        <a href="{{ url_for('download_asset', filename=asset.name) }}">Download</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

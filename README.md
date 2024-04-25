@@ -1,12 +1,12 @@
 # Web-based 3D Model Library
 
-This project is a web-based application that allows users to upload, view, and interact with 3D models. The goal is to create a local, searchable 3D model library, similar to Sketchfab, but with the ability to read from a local SQLite database.
+This project is a web-based application that allows users to upload, view, and interact with 3D models. Create a local, searchable 3D model library, similar to Sketchfab, but with the ability to read from a local SQLite database.
 
 ## Plan
 
 - Backend Development with Python and Flask
 
--  Qt for Web (Qt for WebAssembly)
+-  Qt 
 
 - SQLite as the database
 
