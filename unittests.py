@@ -13,7 +13,7 @@ class TestUserModel(unittest.TestCase):
     def setUp(self):
         self.app = app
         self.app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
-        self.app.config['SECRET_KEY'] = 'secret-key' 
+        self.app.config['SECRET_KEY'] = 'secretkey' 
         self.db = db
         with self.app.app_context():
             self.db.create_all()
@@ -110,7 +110,7 @@ class TestUserModel(unittest.TestCase):
 
     def test_upload_file_with_tags(self):
         with self.app.app_context():
-            # Create a test user
+
             test_user = User(username='testuser')
             test_user.set_password('testpassword')
             db.session.add(test_user)
@@ -128,7 +128,7 @@ class TestUserModel(unittest.TestCase):
                     'file': (BytesIO(b'my file contents'), 'my_file.txt'),
                     'tags': 'tag1, tag2, tag3'
                 })
-
+    
             self.assertEqual(response.status_code, 200)
 
             self.assertIsNotNone(Tag.query.filter_by(name='tag1').first())
@@ -140,6 +140,24 @@ class TestUserModel(unittest.TestCase):
             self.assertIn('tag1', [tag.name for tag in asset.tags])
             self.assertIn('tag2', [tag.name for tag in asset.tags])
             self.assertIn('tag3', [tag.name for tag in asset.tags])
+
+    def test_get_assets(self):
+        with self.app.app_context():
+            test_user = User(username='testuser')
+            test_user.set_password('testpassword')
+            db.session.add(test_user)
+            db.session.commit()
+            self.client.post('/login', data=dict(
+                username='testuser',
+                password='testpassword'
+            ), follow_redirects=True)
+
+            test_asset = Asset(name='test_asset')
+            db.session.add(test_asset)
+            db.session.commit()
+            response = self.client.get('/assets', follow_redirects=True)
+
+            self.assertIn(b'test_asset', response.data)
 
 if __name__ == '__main__':
     unittest.main()
