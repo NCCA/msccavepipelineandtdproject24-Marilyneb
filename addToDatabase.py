@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import argparse
-from WebAssetBase import Connection
+import Connection
 
 def add_asset(database : str, name : str, file_path : str, category : str) :
   print("Adding asset to db")
