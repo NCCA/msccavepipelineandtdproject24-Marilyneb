@@ -2,6 +2,8 @@
 #define MODELBROWSER_H
 
 #include <QMainWindow>
+#include <QNetworkAccessManager>
+#include <QListWidget>
 
 class RestAPIManager;
 
@@ -19,12 +21,26 @@ public:
     ModelBrowser(QWidget *parent = nullptr);
     ~ModelBrowser();
 
+    void fetchAssets();
+    void on_tableWidget_cellClicked(int row, int column);
+
+
+
 private slots:
-    void on_pushButton_6_clicked();
+    void download();
+    void on_uploadButton_clicked();
+    void show3DView(const QString &assetName);
+    void searchAssets(const QString &tag);
+    void updateTable(const QJsonArray &assetsArray);
+
+    void on_lineEdit_2_textChanged(const QString &arg1);
 
 private:
     Ui::ModelBrowser *ui;
-
+    QNetworkAccessManager *networkAccessManager;
     RestAPIManager *m_restAPIManager;
+    QString m_authToken;
+    QListWidget *listWidget;
+    QLineEdit *tagsLineEdit;
 };
 #endif // MODELBROWSER_H
