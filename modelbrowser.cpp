@@ -276,6 +276,7 @@ void ModelBrowser::updateTable(const QJsonArray &assetsArray)
 
     QStringList headers = {"Name", "Tags", "View", "Download"};
     ui->tableWidget->setHorizontalHeaderLabels(headers);  // Set the header labels
+    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     for (int i = 0; i < assetsArray.size(); ++i) {
         QJsonObject assetObj = assetsArray[i].toObject();
