@@ -27,7 +27,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         restapimanager.h restapimanager.cpp
         assetmanager.h assetmanager.cpp
-        3DView.qml
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET WASMModelViewer APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
